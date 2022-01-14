@@ -16,15 +16,17 @@ class ProductList extends Component {
                 {/* Carousel */}
                 <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
                     <div className="carousel-inner">
+                    <div className="carousel-item active">
+                            <img src="https://images.unsplash.com/photo-1610664921890-ebad05086414?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" className="d-block w-100" alt="poster"/>
+                        </div>
+                        <div className="carousel-item ">
+                            <img src="https://images.unsplash.com/photo-1606293459209-958d5c67c84b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1032&q=80" className="d-block w-100" alt="poster"/>
+                        </div>
                         <div className="carousel-item ">
                             <img src="https://images.unsplash.com/photo-1593642634402-b0eb5e2eebc9?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=869&q=80" className="d-block w-100" alt="poster"/>
                         </div>
-                        <div className="carousel-item active">
-                            <img src="https://images.unsplash.com/photo-1606293459209-958d5c67c84b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1032&q=80" className="d-block w-100" alt="poster"/>
-                        </div>
-                        <div className="carousel-item">
-                            <img src="https://images.unsplash.com/photo-1610664921890-ebad05086414?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" className="d-block w-100" alt="poster"/>
-                        </div>
+                       
+                        
                     </div>
                     <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                         <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -42,8 +44,7 @@ class ProductList extends Component {
                         <div className="row justify-content-center products-container">
    <ProductConsumer>
                                  {value => {
-                                    // map adalah looping function, sedangkan product adalah inisialisasi dari products yg dikirim kan dari Context.js
-                                    return value.products.map(product => {
+                                     return value.products.map(product => {
                                         return <Product key={product.id} product={product}/>
                                     })
                                 }}

@@ -3,7 +3,6 @@ import {storeProducts,detailProduct} from './data';
 
 const ProductContext = React.createContext();
 
-// logikanya semua data Data.js ditangkap dan masukan kedalam state dan dilempar ke ProductList.JS
 class ProductProvider extends Component {
     state = {
         products:[],
@@ -16,13 +15,11 @@ class ProductProvider extends Component {
         cartTotal : 0
     }
 
-    // componentDidMount berfungsi menjalankan component setelah content pada web berhasil dirender
-    componentDidMount(){
+     componentDidMount(){
         this.setProducts();
     }
     
-    // memasukan data kedalam singleItem bedanya dengan yg distate. kalo yang ini data akan seola2 direfresh sehingga ketika di ada to cart bisa berubah menjadi incart
-    setProducts = () => {
+     setProducts = () => {
         let tempProducts = [];
         storeProducts.forEach(item => {
             const singleItem = {...item}
@@ -81,7 +78,7 @@ class ProductProvider extends Component {
         this.setState(() => {
             return {cart:[...tempCart]}
         },()=>{
-            // perbaharui total 
+           
             this.addTotals();
         })
     }
