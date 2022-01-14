@@ -72,6 +72,7 @@ body {
 .products-container .product {
   -webkit-transition: all 100ms linear;
   transition: all 100ms linear;
+  border-radius: 40px;
 }
 
 .products-container .product img {

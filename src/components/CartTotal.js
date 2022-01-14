@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function CartColumn({value}) {
-    // buat variabel untuk menangkap value sesuai deklarasi func dan var yang ada pada file Context.js
-    const {cartSubtotal,cartTax,cartTotal,clearCart} = value;
+     const {cartSubtotal,cartTax,cartTotal,clearCart} = value;
     return (
         <React.Fragment>
             <div className="container">

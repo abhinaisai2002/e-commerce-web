@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../logo.svg';
+
 import '../css/App.css';
 import {ButtonContainer} from './Button';
 
@@ -10,7 +10,7 @@ class Navbar extends Component {
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-sm-5">
                 <div className="container-fluid">
                     <Link to="/">
-                        <img src={logo} alt="store" className="navbar-brand" />
+                        <p  alt="store" className="navbar-brand" >ShopHub</p>
                     </Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-navbar">
                         <span className="navbar-toggler-icon"></span>
@@ -26,10 +26,7 @@ import {Link} from 'react-router-dom';" className="link">
                             </Link>
                         </div>
                         <Link to="/cart">
-{/* menggunakan plugin styled-components
-buttonContainer adalah nama tag yang akan kita gunakan untuk menerapkan stylenya
-stylenya dipisah dimasukkan kedalam folder Components berdasarkan nama componentsnya */}
-                            <ButtonContainer className="cart-icon">
+                           <ButtonContainer className="cart-icon">
                                 <i className="fas fa-cart-plus"></i>
                                 <span className="d-md-none d-xs-block ms-2 title">My Shopping Cart</span>
                             </ButtonContainer>
