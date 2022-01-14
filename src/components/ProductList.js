@@ -38,14 +38,10 @@ class ProductList extends Component {
                 {/* Carousel */}
                 <div className="py-5">
                     <div className="container">
-                        {/* function Title diolah di components/Title.js */}
-                        <Title name="our" title="products"/>
+                         <Title name="our" title="products"/>
                         <div className="row justify-content-center products-container">
-
-                            {/* <ProductConsumer> mengambil/menjalankan data dari Context.js */}
-                            <ProductConsumer>
-                                {/* =>{} itu shorthand function jangan katro deh */}
-                                {value => {
+   <ProductConsumer>
+                                 {value => {
                                     // map adalah looping function, sedangkan product adalah inisialisasi dari products yg dikirim kan dari Context.js
                                     return value.products.map(product => {
                                         return <Product key={product.id} product={product}/>

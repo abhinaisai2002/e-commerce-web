@@ -1,4 +1,3 @@
-// Import Semua Component disini Seperti gambar, halaman, plugin, dan lain-lain
 
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
@@ -20,12 +19,8 @@ import Modal from './components/Modal';
 function App() {
   return (
     <React.Fragment>
-      {/* Funsgi Tag Navbar untuk menampilkan navbar yang telah diimport diatas */}
-      <Navbar/>
-      {/* Fungsi Switch ini untuk memetakan jalur path/Route pada URL yg diakses user 
-      path "/" berarti semuanya jadi semua halaman kalo pengecualian tambahkan "exact"
-      */}
-      <Switch>
+        <Navbar/>
+ <Switch>
         <Route exact path="/" component={ProductList} />
         <Route path="/details" component={Details} />
         <Route path="/cart" component={Cart} />

@@ -33,25 +33,20 @@ class ProductProvider extends Component {
         })
     }
 
-    // mengambil id yang dikirim dari product
     getItem = id => {
         const product = this.state.products.find(item => item.id === id);
         return product;
     } 
-    // fungsi ketika handleDetail di klik
     handleDetail = id =>{
         const product = this.getItem(id);
         this.setState(() => {
             return {detailProduct:product}
         })
     }
-    // fungsi ketika handleCart di klik
     addToCart = id =>{
         let tempProducts = [...this.state.products];
-        // index berfungsi untuk membedakan masing2 product
         const index = tempProducts.indexOf(this.getItem(id))
         const product = tempProducts[index];
-        // ketika tambah cart maka true dan count akan jadi 1
         product.inCart = true;
         product.count = 1;
         const price = product.price;
@@ -66,9 +61,7 @@ class ProductProvider extends Component {
     }
     openModal = id => {
         const product = this.getItem(id);
-        this.setState(()=>{
-            // ketika modal open modal produk berisi data produk modalProduct:product
-            return {modalProduct:product, modalOpen:true}
+        this.setState(()=>{ return {modalProduct:product, modalOpen:true}
         })
     }
     closeModal = id => {
@@ -98,9 +91,7 @@ class ProductProvider extends Component {
         const index = tempCart.indexOf(selectProduct);
         const product = tempCart[index];
 
-        product.count = product.count - 1; //count disini adalah Quantity yang ada di data 
-        // kasih kondisi kalo kurang dari 1 dan tetap di kurangi akan dihapus. kalo else maka di kalikan
-        if(product.count === 0){
+        product.count = product.count - 1;  if(product.count === 0){
             this.removeItem(id);
         }else{
             product.total = product.count * product.price;
@@ -108,7 +99,7 @@ class ProductProvider extends Component {
             this.setState(() => {
                 return {cart:[...tempCart]}
             },()=>{
-                // perbaharui total 
+               
                 this.addTotals();
             })
         }
@@ -117,8 +108,7 @@ class ProductProvider extends Component {
         let tempProducts = [...this.state.products];
         let tempCart = [...this.state.cart];
         
-        // gunakan "filter" untuk mengambil barang berdasarkan idnya, pada tahap ini barang yang diambil adalah barang yg tidak dihapus makanya pake !==
-        tempCart = tempCart.filter(item => item.id !== id);
+          tempCart = tempCart.filter(item => item.id !== id);
 
         const index = tempProducts.indexOf(this.getItem(id));
         let removeProduct = tempProducts[index];
@@ -132,32 +122,24 @@ class ProductProvider extends Component {
                 products : [...tempProducts]
             }
         },() => {
-            this.addTotals(); //jalankan kembali total karna ada id yang kita hapus biar update datanya
+            this.addTotals(); 
         });
     }
     clearCart = () => {
-        // kembalikan isi cart jadi array kosong
+        
         this.setState(()=>{
             return {cart:[]};
         },()=> {
-            // setProducts kembali kedefault kosong agar incartnya false atau kosong
-            this.setProducts();
-            // jalankan semua fungsi agar function mengidentifikasi ulang agar kosong lah pokoknya 
-            this.addTotals();
+             this.setProducts();
+             this.addTotals();
         });
     }
     addTotals = () => {
-        // hitung total
-        let subtotal = 0;
-        // keluar kan semua data yang ada di dalam cart untuk proses Hitung
-        this.state.cart.map(item => (subtotal += item.total));
-        const tempTax = subtotal*0.1; //10% = 0.1
-        //toFixed untuk membulatkan angka (2 angka dibelakang ',')
-        const tax = parseFloat(tempTax.toFixed(2));
+         let subtotal = 0;
+         this.state.cart.map(item => (subtotal += item.total));
+        const tempTax = subtotal*0.1;  const tax = parseFloat(tempTax.toFixed(2));
         const total = subtotal + tax;
-        // masukan kedalam setState
-        this.setState(() =>{
-            // return untuk membuat function jadi callback
+  this.setState(() =>{
             return{
                 cartSubtotal : subtotal,
                 cartTax : tax,
@@ -169,9 +151,7 @@ class ProductProvider extends Component {
 
     render() {
         return (
-            // provider dibawah digunakan agar seluruh function yang dibuat dapat digunakan di class yg mengimportnya 
-            // titik 3x digunakan untuk mengirimkan semua data yang ada dalam variable didalam state
-            <ProductContext.Provider value={{
+             <ProductContext.Provider value={{
                 ...this.state, 
                 handleDetail:this.handleDetail, 
                 addToCart:this.addToCart, 
